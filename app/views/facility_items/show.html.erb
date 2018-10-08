@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Facility name:</strong>
+  <%= @facility_item.facility_name %>
+</p>
+
+<p>
+  <strong>Available quantity:</strong>
+  <%= @facility_item.available_quantity %>
+</p>
+
+<p>
+  <strong>Meeting room:</strong>
+  <%= @facility_item.meeting_room_id %>
+</p>
+
+<%= link_to 'Edit', edit_facility_item_path(@facility_item) %> |
+<%= link_to 'Back', facility_items_path %>

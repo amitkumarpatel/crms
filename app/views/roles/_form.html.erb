@@ -1,0 +1,28 @@
+<%= form_with(model: role, local: true) do |form| %>
+  <div class="row">
+    <div class="col-sm-4">
+      <% if role.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(role.errors.count, "error") %> prohibited this role from being saved:</h2>
+
+          <ul>
+          <% role.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="field form-group">
+        <div class="control">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "input form-control" %>
+      </div>
+
+      <div class="field form-group">
+        <div class="control">
+        <%= form.submit :submit, class: "button is-link btn btn-info" %>
+      </div>
+  </div>
+</div>
+<% end %>

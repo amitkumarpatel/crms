@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Holiday name:</strong>
+  <%= @leave_management.holiday_name %>
+</p>
+
+<p>
+  <strong>Date:</strong>
+  <%= @leave_management.date %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @leave_management.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_leave_management_path(@leave_management) %> |
+<%= link_to 'Back', leave_managements_path %>

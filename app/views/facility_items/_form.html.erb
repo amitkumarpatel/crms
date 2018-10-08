@@ -1,0 +1,43 @@
+<%= form_with(model: facility_item, local: true) do |form| %>
+  <div class="row">
+      <% if facility_item.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger fade in">
+          <h2><%= pluralize(facility_item.errors.count, "error") %> prohibited this facility_item from being saved:</h2>
+
+          <ul>
+          <% facility_item.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <div class="col-sm-4">
+
+      <div class="field form-group">
+        <div class="control">
+        <%= form.label :facility_name %>
+        <%= form.text_field :facility_name, class: "input form-control" %>
+      </div>
+
+      <div class="field form-group">
+        <div class="control">
+
+        <%= form.label :available_quantity %>
+        <%= form.number_field :available_quantity, class: "input form-control" %>
+      </div>
+
+      <div class="field form-group">
+        <div class="control">
+
+        <%= form.label :meeting_room_id %>
+        <%= form.select :meeting_room_id, MeetingRoom.where("true").collect{ |r| [ r.name, r.id]},{},class: "input form-control" %>
+
+      </div>
+
+      <div class="field form-group">
+        <div class="control">
+        <%= form.submit :submit, class: "button is-link btn btn-info" %>
+      </div>
+  </div>
+</div>
+<% end %>

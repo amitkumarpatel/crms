@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Meeting Rooms</h1>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Floor no</th>
+      <th colspan="3" class="text-center"> Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @meeting_rooms.each do |meeting_room| %>
+      <tr>
+        <td><%= meeting_room.name %></td>
+        <td><%= meeting_room.floor_no %></td>
+        <td><%= link_to 'Show', meeting_room, class: "btn btn-info"%></td>
+        <td><%= link_to 'Edit', edit_meeting_room_path(meeting_room), class: "btn btn-warning" %></td>
+        <td><%= link_to 'Destroy', meeting_room, method: :delete, data: { confirm: 'Are you sure?' } , class: "btn btn-danger"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @meeting_rooms, theme: 'my_custom_theme' %>
+
+<br>
+
+<%= link_to 'New Meeting Room', new_meeting_room_path, class: "btn btn-primary" %>

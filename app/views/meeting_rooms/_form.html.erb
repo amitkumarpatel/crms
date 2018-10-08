@@ -1,0 +1,38 @@
+<%= form_with(model: meeting_room, local: true) do |form| %>
+  <div class="row">
+
+      <% if meeting_room.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger fade in">
+          <h2><%= pluralize(meeting_room.errors.count, "error") %> prohibited this meeting_room from being saved:</h2>
+
+          <ul>
+          <% meeting_room.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <div class="col-sm-4">
+
+      <div class="field form-group">
+        <div class="control">
+          <%= form.label :name %>
+          <%= form.text_field :name, class: "input form-control" %>
+        </div>
+      </div>  
+
+      <div class="field form-group">
+        <div class="control">
+          <%= form.label :floor_no %>
+          <%= form.number_field :floor_no, class: "input form-control" %>
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <div class="control">
+          <%= form.submit :submit, class: "button is-link btn btn-info" %>
+        </div>
+      </div>  
+    </div>
+  </div>  
+<% end %>

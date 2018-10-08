@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Facility Items</h1>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Facility name</th>
+      <th>Available quantity</th>
+      <th>Meeting room</th>
+      <th colspan="3" class="text-center"> Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @facility_items.each do |facility_item| %>
+      <tr>
+        <td><%= facility_item.facility_name %></td>
+        <td><%= facility_item.available_quantity %></td>
+        <td><%= facility_item.meeting_room_id %></td>
+        <td><%= link_to 'Show', facility_item, class: "btn btn-info" %></td>
+        <td><%= link_to 'Edit', edit_facility_item_path(facility_item), class: "btn btn-warning" %></td>
+        <td><%= link_to 'Destroy', facility_item, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @facility_items, theme: 'my_custom_theme' %>
+
+<br>
+
+<%= link_to 'New Facility Item', new_facility_item_path , class: "btn btn-primary"%>

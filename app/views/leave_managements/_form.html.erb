@@ -1,0 +1,61 @@
+<%= form_with(model: leave_management, local: true) do |form| %>
+  <div class="row">
+
+      <% if leave_management.errors.any? %>
+        <div id="error_explanation" class="alert alert-danger fade in">
+          <h2><%= pluralize(leave_management.errors.count, "error") %> prohibited this leave_management from being saved:</h2>
+
+          <ul>
+          <% leave_management.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+    <div class="col-sm-4">
+      <div class="field form-group">
+        <div class="control">
+          <%= form.label :holiday_name %>
+          <%= form.text_field :holiday_name, class: "input form-control" %>
+        </div>
+      </div>
+
+      
+
+      <div class="field form-group">
+        <div class="control">
+`         <%= form.label :date %>
+          <div class='input-group date' id='datetimepicker1'>
+            <%= form.text_field :date, class: "input form-control" %>
+            <span class="input-group-addon">
+              <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="field form-group">
+        <div class="control">
+          <%#= form.label :user_id %>
+          <%= form.hidden_field :user_id, value: current_user.try(:id), class: "input form-control" %>
+        </div>
+      </div>
+
+      <div class="field form-group">
+        <div class="control">
+          <%= form.submit :submit, class: "button is-link btn btn-info" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+<script type="text/javascript">
+    $(function () {
+      $('#datetimepicker1').datetimepicker({
+        format: 'DD/MM/YYYY hh:mm A',
+        daysOfWeekDisabled: [0, 6]
+      });
+    });
+</script>
